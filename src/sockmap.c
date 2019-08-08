@@ -168,7 +168,7 @@ int splicemap(struct clientparam * param, int timeo){
 	RETURN(92);
     }
     if((fds[0].revents & (POLLERR|POLLNVAL)) ) {
-  	RETURN(90);
+  	RETURN(102);
     }
     if((fds[1].revents & (POLLERR|POLLNVAL))) {
   	RETURN(101);
