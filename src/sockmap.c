@@ -167,11 +167,17 @@ int splicemap(struct clientparam * param, int timeo){
     if(res < 1){
 	RETURN(92);
     }
-    if((fds[0].revents & (POLLERR|POLLNVAL)) ) {
-  	RETURN(102);
-    }
-    if((fds[1].revents & (POLLERR|POLLNVAL))) {
+    if((fds[0].revents & (POLLERR)) ) {
   	RETURN(101);
+    }
+    if((fds[0].revents & (POLLNVAL))) {
+  	RETURN(101);
+    }
+    if((fds[1].revents & (POLLERR)) ) {
+  	RETURN(103);
+    }
+    if((fds[1].revents & (POLLNVAL))) {
+  	RETURN(104);
     }
     if( (fds[0].revents & (POLLHUP|POLLRDHUP))) {
 	stop = clisockstate = 1;
